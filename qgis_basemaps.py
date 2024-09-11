@@ -1,20 +1,4 @@
-"""
-This script should be run from the Python consol inside QGIS.
-
-It adds online sources to the QGIS Browser.
-Each source should contain a list with the folowing items (string type):
-[sourcetype, title, authconfig, password, referer, url, username, zmax, zmin]
-
-You can add or remove sources from the sources section of the code.
-
-Script by Klas Karlsson
-Sources from https://qms.nextgis.com/
-
-Licence GPL-3
-"""
-
-
-# Sources
+# Fontes
 sources = []
 sources.append(["connections-xyz","Google Maps","","","","https://mt1.google.com/vt/lyrs=m&x=%7Bx%7D&y=%7By%7D&z=%7Bz%7D","","19","0"])
 sources.append(["connections-xyz","Google Satellite", "", "", "", "https://mt1.google.com/vt/lyrs=s&x=%7Bx%7D&y=%7By%7D&z=%7Bz%7D", "", "19", "0"])
@@ -50,7 +34,7 @@ sources.append(["connections-xyz","CartoDb Positron", "", "", "Map tiles by Cart
 sources.append(["connections-xyz","Bing VirtualEarth", "", "", "", "http://ecn.t3.tiles.virtualearth.net/tiles/a{q}.jpeg?g=1", "", "19", "1"])
 
 
-# Add sources to browser
+# adicionar fontes no browser
 for source in sources:
    connectionType = source[0]
    connectionName = source[1]
@@ -62,5 +46,5 @@ for source in sources:
    QSettings().setValue("qgis/%s/%s/zmax" % (connectionType, connectionName), source[7])
    QSettings().setValue("qgis/%s/%s/zmin" % (connectionType, connectionName), source[8])
 
-# Update GUI
+# atualizar a interface
 iface.reloadConnections()
